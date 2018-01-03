@@ -1,11 +1,16 @@
 <template>
-<div>
-        <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="黑马程序员·Vue项目"></mt-header>
+<div class="app-container">
+        <!--引用了mint-ui的 顶部 Header 区域 -->
+    <mt-header fixed title="试炼·Vue项目"></mt-header>
 
-sa
 
-      <!-- 底部 Tabbar 区域 -->
+		<!-- 中间区域 -->
+	<transition mode="out-in">
+		<router-view></router-view>
+	</transition>
+
+
+      <!--引用mui的 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
@@ -26,26 +31,36 @@ sa
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
-</div>  
+</div> 
+
+
+
 </template>
 
 <script>
 
 
-export default {
-  data() {
-    return {
-      toastInstanse: null
-    };
-  },
-  created() {
-  },
-  methods: {
-
-  }
-};
 
 </script>
+
+<style lang="scss" scoped>
+  .app-container{  //给最外层div设置上内边距
+		padding-top: 40px;
+		overflow-x: hidden;
+	}
+	.v-enter{
+		opacity: 0;
+		transform: translate(100%)
+	}
+	.v-leave-to{
+		opacity: 0;
+		transform: translate(-100%)
+	}
+	.v-enter-active,
+	.v-leave-active{
+		transition: all 0.5s ease ;
+	}
+</style>
 
 
 
